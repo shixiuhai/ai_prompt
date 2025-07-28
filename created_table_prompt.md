@@ -7,15 +7,16 @@
 1. 表名 = [表前缀] + [表注释自动翻译为的英文表名]（使用小写蛇形命名）
 2. 默认字段：
    - id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID'
-   - created_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
-   - updated_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+   - created_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+   - updated_time DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
 3. 字段翻译与类型推断：
    - “ID”或“编号” → INT(11)
    - “类型” →  INT(5)
    - “是否相关状态” - > INT(2)
    - “时间”或“日期” → DATETIME
    - 其他 → VARCHAR(255)
-   - “备注”/“描述”/“时间” 字段允许 NULL，其他字段 NOT NULL
+   - 除id以外其他字段都默认不强制设置为NOT NULL
+   
 4. 每个字段添加 COMMENT，使用原中文名
 5. 表末尾添加：
    ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='[表注释]'
@@ -29,5 +30,3 @@
 - 表前缀: [如 tbl_]
 - 表注释: [如 用户信息表]
 - 中文字段列表: [如 用户名, 密码, 手机号, 用户状态, 最后登录IP, 备注]
-
-
