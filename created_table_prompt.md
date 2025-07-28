@@ -15,7 +15,7 @@
    - “是否相关状态” - > INT(2)
    - “时间”或“日期” → DATETIME
    - 其他 → VARCHAR(255)
-   - “备注”/“描述”字段允许 NULL，其他字段 NOT NULL
+   - “备注”/“描述”/“时间” 字段允许 NULL，其他字段 NOT NULL
 4. 每个字段添加 COMMENT，使用原中文名
 5. 表末尾添加：
    ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='[表注释]'
