@@ -49,6 +49,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -61,35 +62,58 @@ import java.util.Date;
  */
 @Data
 @TableName("device_equipment")
+@Schema(description = "设备管理表")
 public class DeviceEquipment {
     @TableId(type = IdType.AUTO)
+    @Schema(description = "主键ID")
     private Integer id;
 
+    @Schema(description = "设备编码")
     private String equipmentCode;
+
+    @Schema(description = "设备名称")
     private String equipmentName;
+
+    @Schema(description = "设备型号")
     private String equipmentModel;
+
+    @Schema(description = "设备类型")
     private Integer equipmentType;
+
+    @Schema(description = "载重")
     private String loadCapacity;
+
+    @Schema(description = "作业高度")
     private String workingHeight;
+
+    @Schema(description = "作业区域")
     private String workingArea;
+
+    @Schema(description = "操作")
     private String operation;
+
+    @Schema(description = "备注")
     private String remark;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Schema(description = "创建时间")
     private Date createdTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Schema(description = "更新时间")
     private Date updatedTime;
 
     @TableField(exist=false)
     @JsonIgnore
     private Date startTime;
+    
     @TableField(exist=false)
     @JsonIgnore
     private Date endTime;
 }
+
 
 ### 模块2：DAO接口
 package com.walk.business.dao;
